@@ -54,7 +54,7 @@ export function compareAttacks(message) {
                     {weight: 10, text: `A supreme disappointment.`},
                     {weight:  1, text: `Sad and noob!`},
                     {weight: 10, text: `I hope no one was watching that...`},
-                    {weight:  1000, text: `${heroName} has small peepee.`}
+                    {weight:  1, text: `${heroName} has small peepee.`}
                 ]
             },
             {
