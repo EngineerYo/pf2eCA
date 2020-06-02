@@ -13,17 +13,12 @@ export function compareAttacks(message) {
         let successStep = -1;
 
         let naturalRoll = message.roll.dice[0].rolls[0].roll
-        if (naturalRoll == 20) {
-            successStep = 3
-        }
-        else if (naturalRoll == 1) {
-            successStep = 0
-        }
-        else {
-            let rollTotal = message.roll.total
-            let actorAC = t.actor.data.data.attributes.ac.value
+        let rollTotal = message.roll.total
+        let actorAC = t.actor.data.data.attributes.ac.value
+
+        if (naturalRoll != 20 && naturalRoll != 1) {
             if (rollTotal >= actorAC + 10) {
-                successStep = 3;
+                successStep = 3
             } 
             else if (rollTotal >= actorAC) {
                 successStep = 2
@@ -35,14 +30,23 @@ export function compareAttacks(message) {
                 successStep = 1
             }
         }
+        else {
+            if (naturalRoll == 20) {
+                successStep += 1
+            }
+            else if (naturalRoll == 1) {
+                successStep -= 1
+            }
+        } 
 
+        successStep = Math.clamp(successStep, 0, 3)
 
         let playerActor = game.user.character
 
         let heroName = playerActor.data.name
         let posHeroName = playerActor.data.name
         if (heroName[heroName.length - 1] == 's') {
-            posHeroName =  heroName.substring(0, heroName.length-2)
+            posHeroName =  heroName.substring(0, heroName.length - 2)
         }
 
         let differenceLookup = [
