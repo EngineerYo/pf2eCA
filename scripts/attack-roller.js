@@ -25,10 +25,12 @@ export function compareAttacks(message) {
         //Ensuring the successStep doesn't somehow break the system catastrophically?
         successStep = Math.clamp(successStep, 0, 3);
 
-        let heroName = actor.data.name
-        let posHeroName = actor.data.name
-        if (actor.data.name[actor.data.name.length - 1] == 's') {
-            posHeroName =  actor.data.name.substring(0, actor.data.name.length-2)
+        let playerActor = game.user.character
+
+        let heroName = playerActor.data.name
+        let posHeroName = playerActor.data.name
+        if (heroName[heroName.length - 1] == 's') {
+            posHeroName =  heroName.substring(0, heroName.length-2)
         }
 
         let differenceLookup = [
