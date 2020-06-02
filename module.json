@@ -1,6 +1,6 @@
 {
-    "name": "pf2qr",
-    "title": "Pathfinder 2e Quick Rolls",
+    "name": "pf2e Combat Automation",
+    "title": "Pathfinder 2e Combat Automation",
     "description": "Adds non-intrusive methods of automation to the pf2e system, including attack-ac comparison, save buttons, and resistance accounting.",
     "author": "Darth_Apples",
     "version": "1.3.1",
