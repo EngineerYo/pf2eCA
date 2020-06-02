@@ -8,7 +8,7 @@
     "esmodules": [ 
         "pf2qr-main.js"
     ],
-    "url":"https://gitlab.com/mcarthur.alford/pf2qr/raw/master",
-    "manifest":"https://gitlab.com/mcarthur.alford/pf2qr/raw/master/module.json",
-    "download":"https://gitlab.com/mcarthur.alford/pf2qr/raw/master/pf2qr.zip"
+    "url":"https://github.com/EngineerYo/pf2eCA",
+    "manifest":"https://github.com/EngineerYo/pf2eCA/module.json",
+    "download":"https://github.com/EngineerYo/pf2eCA/pf22CA.zip"
   }
