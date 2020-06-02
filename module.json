@@ -1,0 +1,14 @@
+{
+    "name": "pf2qr",
+    "title": "Pathfinder 2e Quick Rolls",
+    "description": "Adds non-intrusive methods of automation to the pf2e system, including attack-ac comparison, save buttons, and resistance accounting.",
+    "author": "Darth_Apples",
+    "version": "1.3.1",
+    "minimumCoreVersion": "0.5.0",
+    "esmodules": [ 
+        "pf2qr-main.js"
+    ],
+    "url":"https://gitlab.com/mcarthur.alford/pf2qr/raw/master",
+    "manifest":"https://gitlab.com/mcarthur.alford/pf2qr/raw/master/module.json",
+    "download":"https://gitlab.com/mcarthur.alford/pf2qr/raw/master/pf2qr.zip"
+  }

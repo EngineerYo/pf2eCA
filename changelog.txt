@@ -1,0 +1,28 @@
+Hot New Features:
+#1.3.1 - Hey There! Removed ALL Instances of Hey There from attack rolls......
+#1.3.0 - Any spell with a template programmed in (see spell description if template is missing) now has a button to drag and drop the template onto the map with correct scaling.
+#1.3.0 - When rolling group attacks/saves, clicking on items in the chat log will target them in game.
+		- double clicking the item selects all of the same success level.
+		- shift clicking adds/removes additional selections (works with doubleclick). 
+#1.3.0 - Complete rework of the modules structure, using modules now for organisation. Better commenting and lots of refactored code, particularly around hooks and chat listening.
+#1.3.0 - Improved the readme significantly, it no longer resembles 1.0.0.
+
+Retro Features:
+#1.2.0 - Added the option to show bubbles above player heads when rolling.
+#1.2.0 - Overhauled the result box visuals.
+		- Added Fancy Symbols for success
+		- Much clearer distinctions
+		- Proper, non-eye-melting color scheme
+		- Added More Exclamation Marks!!!!!!
+		- Yes.
+#1.2.0 - Fixed saves always showing exceed-by value. Thanks for pointing that out Nerull.
+#1.2.0 - Refactored message system for more flexibility once again. Probably not done.
+#1.2.0 - Fixed wrong version number in intaller.
+
+#1.1.0 - Added option as to whether to send quick-roll results to players.
+#1.1.0 - Added option as to whether to show how much a roll exceeded a value by.
+#1.1.0 - Added option that controls whether players can use quick rolling at all.
+#1.1.0 - Added option to control whether players can use quick-rolling only on their turn.
+#1.1.0 - Abstracted chat-messages to be more flexible with future additions.
+
+#1.0.0 - Added Everything.
