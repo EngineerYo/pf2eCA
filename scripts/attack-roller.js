@@ -93,7 +93,7 @@ export function compareAttacks(message) {
 
         let successBy = message.roll.total - t.actor.data.data.attributes.ac.value;
         let selectedMessage = null
-        for (i in differenceLookup) {
+        for (let i in differenceLookup) {
             let target = differenceLookup[i]
             if ((target.high == null || successBy <= target.high) && (target.low == null || successBy > target.low)) {
                 let weightSum = 0
@@ -102,7 +102,7 @@ export function compareAttacks(message) {
                 }
 
                 let randNum = Math.random()*weightSum
-                for (j in target.messages) {
+                for (let j in target.messages) {
                     if (randNum <= target.messages[i].weight) {
                         selectedMessage = target.messages[i].text
 
