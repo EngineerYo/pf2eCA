@@ -12,18 +12,30 @@ export function compareAttacks(message) {
         // 0 = critical failure
         let successStep = -1;
 
-        //getting the base level of success from the roll:
-        if (message.roll.total >= t.actor.data.data.attributes.ac.value) {
-            successStep = 2;
-        } else {
-            successStep = 1;
+        let naturalRoll = message.roll.dice[0].rolls[0].roll
+        if (naturalRoll == 20) {
+            successStep = 3
+        }
+        else if (naturalRoll == 1) {
+            successStep = 0
+        }
+        else {
+            let rollTotal = message.roll.total
+            let actorAC = t.actor.data.data.attributes.ac.value
+            if (rollTotal >= actorAC + 10) {
+                successStep = 3;
+            } 
+            else if (rollTotal >= actorAC) {
+                successStep = 2
+            }
+            else if (rollTotal <= actorAC - 10) {
+                successStep = 0
+            }
+            else {
+                successStep = 1
+            }
         }
 
-        //Augmenting the success by criticals and natural 20s/1s:
-        successStep += critCheck(message.roll, t.actor.data.data.attributes.ac.value);
-
-        //Ensuring the successStep doesn't somehow break the system catastrophically?
-        successStep = Math.clamp(successStep, 0, 3);
 
         let playerActor = game.user.character
 
@@ -42,7 +54,7 @@ export function compareAttacks(message) {
                     {weight: 10, text: `A supreme disappointment.`},
                     {weight:  1, text: `Sad and noob!`},
                     {weight: 10, text: `I hope no one was watching that...`},
-                    {weight:  1, text: `${heroName} has small peepee`}
+                    {weight:  1000, text: `${heroName} has small peepee.`}
                 ]
             },
             {
@@ -50,7 +62,7 @@ export function compareAttacks(message) {
                 high:   -5,
                 messages: [
                     {weight: 10, text: `The attack falters against the foe's superior defenses.`},
-                    {weight: 10, text: `${heroName} will have to try harder than that.`},
+                    {weight: 10, text: `${heroName} will have to try harder than that.`}
                 ]
             },
             {
@@ -75,7 +87,7 @@ export function compareAttacks(message) {
                 high:   9,
                 messages: [
                     {weight: 10, text: `${posHeroName}'s strike was well placed.`},
-                    {weight: 10, text: `Another solid hit by ${posHeroName}`}
+                    {weight: 10, text: `Another solid hit by ${posHeroName}.`}
                 ]
             },
             {
@@ -87,29 +99,36 @@ export function compareAttacks(message) {
                     {weight: 10, text: `Decimated! Obliterated! Annhiliated!`},
                     {weight: 10, text: `Destruction awaits this one!`}
                 ]
-            },
+            }
 
         ]
 
         let successBy = message.roll.total - t.actor.data.data.attributes.ac.value;
+        if (successStep == 3) {
+            successBy = 10
+        }
         let selectedMessage = null
         for (let i in differenceLookup) {
             let target = differenceLookup[i]
-            if ((target.high == null || successBy <= target.high) && (target.low == null || successBy > target.low)) {
+            if ((target.high == null || successBy <= target.high) && (target.low == null || successBy >= target.low)) {
                 let weightSum = 0
-                for (j in target.messages) {
-                    weightSum += target.messages[j].weight
+                for (let message of target.messages) {
+                    weightSum += message.weight
                 }
 
                 let randNum = Math.random()*weightSum
+                if (successStep == 3) {
+                    console.log(randNum)
+                }
                 for (let j in target.messages) {
-                    if (randNum <= target.messages[i].weight) {
-                        selectedMessage = target.messages[i].text
+                    if (randNum <= target.messages[j].weight) {
+                        selectedMessage = target.messages[j].text
+                        console.log(target.messages[j].text)
 
                         break
                     }
                     else {
-                        randNum -= target.messages[i].weight
+                        randNum -= target.messages[j].weight
                     }
                 }
 
